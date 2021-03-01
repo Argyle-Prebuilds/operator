@@ -11,3 +11,4 @@ api/logos
 mediafiles/
 media/
 node_modules/
+tools/env/.env
