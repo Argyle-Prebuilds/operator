@@ -1,0 +1,13 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+/.idea
+/.DS_Store
+frontend/.idea
+api/.idea
+api/static/*
+*.pyc
+api/api/.idea/
+api/logos
+mediafiles/
+media/
+node_modules/
