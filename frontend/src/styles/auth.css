@@ -1,0 +1,21 @@
+.link-color {
+  color: #303A66;
+  text-decoration: none;
+}
+
+.link-disable-visited:visited {
+  color: #303A66;
+  text-decoration: none;
+}
+
+.MuiButton-contained.button-auth {
+  background-color: #323a64 ;
+}
+
+.spinner-container {
+  height: 40px; /* prevents expansion when CircularProgress component is rendered inside */
+}
+
+.button-min-width + .button-min-width {
+  margin-left: 20px;
+}

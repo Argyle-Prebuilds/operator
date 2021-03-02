@@ -1,0 +1,23 @@
+.left-menu {
+  background: white;
+  height: auto;
+}
+
+.navbar-link {
+  padding: 10px 30px 10px 15px;
+  text-decoration: none;
+  color: gray;
+  font-size: 15px;
+  text-transform: uppercase;
+}
+
+.navbar-link.active {
+  color: black;
+}
+.menu-container.MuiList-root{
+  margin-top: 15px;
+}
+
+.padded-divider.MuiDivider-root{
+  margin: 0 15px;
+}

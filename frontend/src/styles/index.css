@@ -1,0 +1,133 @@
+@import "auth.css";
+@import "navbar.css";
+
+:root {
+    --grey-color: #d9d9d9;
+    --dark-grey-color: rgba(0, 0, 0, 0.54);
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: #f5f5f5;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.MuiContainer-root.index-container {
+    /*display: flex;*/
+    width: 100%;
+}
+
+.main-container {
+    padding: 20px 0;
+    width: 75%;
+    margin: auto;
+}
+
+.mini {
+    width: 40%;
+}
+
+.paper-container {
+    margin: 30px 0;
+    padding: 15px 35px 40px 35px;
+}
+
+.page-title {
+    font-size: 14px;
+    margin-bottom: 45px;
+}
+
+.tabs-navbar {
+    display: inline-flex;
+    flex-direction: row;
+    gap: 80px;
+    font-size: 14px;
+}
+
+.tab-name {
+    cursor: pointer;
+    border-bottom: 1px solid black;
+}
+
+.tab-panel {
+    margin-top: 40px;
+}
+
+.inactive-tab {
+    color: var(--dark-grey-color);
+    border: none;
+}
+
+.margin-top-30 {
+    margin-top: 30px;
+}
+
+.margin-bottom-25 {
+    margin-bottom: 25px;
+}
+
+.MuiButtonBase-root.MuiButton-root.button-centered {
+    display: block;
+    margin: auto;
+}
+
+.header {
+    font-size: 14px;
+}
+
+.sub-header {
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.textfield-block {
+    width: 100%;
+    margin: auto;
+}
+
+.MuiSvgIcon-root.login-icon {
+    margin: auto;
+    display: block;
+    width: 75px;
+    height: 75px;
+    color: #323a64;
+    box-shadow: 0 0 0 0 10px black;
+}
+
+.card-auth {
+    border: none;
+    width: 350px;
+    margin: auto;
+    padding: 20px;
+}
+
+.margin-top-25 {
+    margin-top: 25px !important;
+}
+
+.insert-link-btn {
+    margin: 0 0 auto 20px !important;
+    width: 150px;
+}
+
+.__json-pretty__ {
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.MuiPagination-ul {
+    justify-content: center !important;
+}
+
+.MuiInput-underline.Mui-disabled:before {
+    border-bottom-style: none !important;
+}
