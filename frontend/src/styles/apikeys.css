@@ -1,0 +1,12 @@
+.MuiInput-underline.Mui-disabled:before {
+  border-bottom-style: none !important;
+}
+
+.service-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.add-key-pair-btn{
+  margin: 15px 0 0 0;
+}

@@ -7,3 +7,11 @@ class MailException(APIException):
 
     def __init__(self, message=''):
         self.detail = message if message else self.detail
+
+
+class ArgyleIntegration(APIException):
+    status_code = 400
+    detail = "Argyle credentials"
+
+    def __init__(self, message=''):
+        self.detail = message if message else self.detail

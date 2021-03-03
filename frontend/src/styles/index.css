@@ -1,6 +1,8 @@
 @import "auth.css";
 @import "navbar.css";
 @import "dialogs.css";
+@import "apikeys.css";
+@import "api-integrations.css";
 
 :root {
     --grey-color: #d9d9d9;
@@ -139,4 +141,16 @@ code {
 
 .MuiInput-underline.Mui-disabled:before {
     border-bottom-style: none !important;
+}
+
+.MuiFormControlLabel-root.switch-box.MuiFormControlLabel-labelPlacementStart {
+    justify-content: flex-end;
+    margin: 10px 0;
+
+}
+
+.switch-box > .MuiTypography-root.MuiFormControlLabel-label.MuiTypography-body1 {
+    font-weight: bold;
+    font-size: 14px;
+    font-family: inherit;
 }
