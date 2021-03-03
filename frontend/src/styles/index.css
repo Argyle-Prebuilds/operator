@@ -1,5 +1,6 @@
 @import "auth.css";
 @import "navbar.css";
+@import "dialogs.css";
 
 :root {
     --grey-color: #d9d9d9;
@@ -103,6 +104,11 @@ code {
     box-shadow: 0 0 0 0 10px black;
 }
 
+.action-buttons .MuiButton-root {
+    color: var(--dark-grey-color);
+    min-width: 0;
+}
+
 .card-auth {
     border: none;
     width: 350px;
@@ -110,6 +116,9 @@ code {
     padding: 20px;
 }
 
+.actions-cell{
+    height: 40px;
+}
 .margin-top-25 {
     margin-top: 25px !important;
 }

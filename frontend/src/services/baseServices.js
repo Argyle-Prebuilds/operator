@@ -4,8 +4,8 @@ import config from "../config";
 export const API_URL = config.API_URL;
 
 
-export const activateAccountService = (data = {}) => {
-  return baseAPI.put(`${API_URL}/users/activate/`, data);
+export const activateAccountService = (user_id, data ) => {
+  return baseAPI.put(`${API_URL}/users/activate/${user_id}/`, data);
 };
 export const loginService = (data) => {
   return baseAPI.post(`${API_URL}/auth/login/`, data)
