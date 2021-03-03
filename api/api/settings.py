@@ -59,7 +59,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'users',
     'api_keys',
-    'link_generator'
+    'link_generator',
+    'homepage'
 ]
 
 MIDDLEWARE = [
