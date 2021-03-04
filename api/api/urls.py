@@ -23,6 +23,7 @@ urlpatterns = [
                   path('auth/', include('users.urls.auth_urls')),
                   path('users/', include('users.urls.users_urls')),
                   path('integrations/', include('api_keys.urls')),
+                  path('homepage/', include('homepage.urls')),
 
 
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL,
