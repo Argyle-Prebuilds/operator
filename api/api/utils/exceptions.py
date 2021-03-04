@@ -15,3 +15,11 @@ class ArgyleIntegration(APIException):
 
     def __init__(self, message=''):
         self.detail = message if message else self.detail
+
+
+class TwilioIntegration(APIException):
+    status_code = 400
+    detail = "Twilio exception"
+
+    def __init__(self, message=''):
+        self.detail = message if message else self.detail

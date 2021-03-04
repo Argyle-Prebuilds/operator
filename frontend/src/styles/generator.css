@@ -1,0 +1,33 @@
+.row-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.half-width-div {
+  width: 45%;
+}
+
+.small-text {
+  font-size: 10px
+}
+
+.extra-info-div {
+  display: block;
+  width: 100%;
+  /*border: 1px solid var(--grey-color);*/
+  padding: 10px 0 0 30px;
+}
+
+.checkbox-div {
+  width: 30%;
+}
+
+.multirows-div {
+  height: 100%;
+}
+
+.medium-textfield {
+  width: 80%;
+}

@@ -24,6 +24,8 @@ urlpatterns = [
                   path('users/', include('users.urls.users_urls')),
                   path('templates/', include('users.urls.templates_urls')),
                   path('integrations/', include('api_keys.urls')),
+                  path('generator/', include('link_generator.urls')),
+                  path('webhooks/', include('webhooks.urls')),
                   path('homepage/', include('homepage.urls')),
 
 
