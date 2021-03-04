@@ -31,3 +31,11 @@ export const addAPIKey = (data = {}) => {
 export const setHomepageSettings = (data = {}) => {
   return authAPI.post(`${API_URL}/homepage/homepage-settings/`, data);
 };
+
+export const getUserEditsSettings = () => {
+  return authAPI.get(`${API_URL}/templates/activation-user-template/`);
+};
+
+export const setUserEditsSettings = (data = {}) => {
+  return authAPI.post(`${API_URL}/templates/activation-user-template/`, data);
+};

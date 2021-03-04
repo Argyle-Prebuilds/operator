@@ -2,7 +2,6 @@
 @import "homepage-settings.css";
 @import "navbar.css";
 @import "dialogs.css";
-@import "apikeys.css";
 @import "api-integrations.css";
 
 :root {
@@ -35,6 +34,11 @@ code {
     width: 75%;
     margin: auto;
 }
+
+.flex-container {
+    display: flex;
+}
+
 
 .mini {
     width: 40%;

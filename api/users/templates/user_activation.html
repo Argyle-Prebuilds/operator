@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" style="line-height: 1.15; font-family: 'Roboto', sans-serif;">
+<head>
+    <title>{{ client }} has asked you to connect your work accounts</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <style type="text/css">
+        @media only screen and (max-width: 600px) {
+            .bottom-wrapper {
+                background-color: #000000;
+                width: 100%;
+            }
+
+            .side-padding {
+                padding: 0 20px;
+            }
+        }
+
+        @media only screen and (min-width: 601px) {
+            .bottom-wrapper {
+                background-color: #000000;
+                width: 100%;
+            }
+
+            .center {
+                width: 610px !important;
+                margin-right: auto;
+                margin-left: auto;
+            }
+
+            .wrapper {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+
+            .side-padding {
+                padding: 0 40px;
+            }
+        }
+    </style>
+</head>
+<body class="body p-8"
+      style="margin: 0; line-height: 1.70; font-family: 'Roboto', sans-serif; background-color: #f4f4f4;">
+<div class="wrapper">
+    <div style="background-color: #ffffff;" class="center">
+        <div>
+            {% if user_activation_settings.logo %}
+            <img style="padding-top: 23px; padding-bottom: 23px; width:auto; height: 40px;" class="side-padding"
+                 alt="logo" title="logo" src="{{BASE_URL}}{{ user_activation_settings.logo.url }}" width="84px">
+            {% endif %}
+            <img src="http://cdn.mcauto-images-production.sendgrid.net/07316c3cd6594202/3aff2211-9653-4856-8fb0-a0fae9a55736/960x640.png"
+                 width="100%" style="margin-bottom: 52px; display:block" alt="icon" title="icon"/>
+            <h1 class="side-padding"
+                style="font-size: 36px; font-weight: 500; font-family: 'Roboto', sans-serif; line-height: normal; margin-top: 0; margin-bottom: 26px;">
+                {{ user_activation_settings.header }}
+            </h1>
+            <div class="side-padding"
+                 style="font-size: 15px; color: black; line-height: 1.5; font-family: 'Roboto', sans-serif; margin-bottom: 33px;">
+                {{user_activation_settings.body | safe}}
+            </div>
+            <p class="side-padding" style="margin: 0; font-family: 'Roboto', sans-serif; display: block;">
+                <a href="{{ link }}"
+                   style="display: inline-block; font-size: 16px; font-weight: 500; background-color: #40ac74; color: #fff; text-align: center; font-family: 'Roboto-Medium', sans-serif; text-decoration: none !important; border-radius: 4px; padding: 7px 15px; margin-bottom: 10px;">
+                    <span style="margin-right: 10px;">{{user_activation_settings.button_text}}</span>
+                    <img alt="icon" title="icon"  width="6px" height="10px"
+                         src="http://cdn.mcauto-images-production.sendgrid.net/07316c3cd6594202/5c425ec4-384f-460b-87f2-35888d132408/12x20.png"
+                    />
+                </a>
+            </p>
+            <br>
+            <br>
+        </div>
+        <div class="bottom-wrapper">
+            <div style="padding: 20px 40px 23px 40px; font-family: 'Helvetica', sans-serif;">
+                <p style="">
+                    <a href="{{unsubscribe}}"
+                       style="font-size: 12px; color: white; opacity: 0.6; text-decoration: none;">Unsubscribe</a>
+                    <span style="font-size: 12px; color: white; opacity: 0.6; margin-left: 10px;">•</span>
+                    <a href="https://argyle.io/legal/privacy-policy"
+                       style="font-size: 12px; color: white; opacity: 0.6; text-decoration: none; margin-left: 10px;">Legal
+                        Terms</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

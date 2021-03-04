@@ -18,3 +18,13 @@ export const HOMEPAGE_SETTINGS_INITIAL = {
   show_button: true,
   button_text: ''
 }
+
+export const USER_EDITS_SETTINGS_INITIAL = {
+    logo: '',
+    header: '',
+    body: '',
+    button_text: '',
+    subject: ''
+}
+
+export const SMS_INVITATION_LINK_CODE = "[Invitation Link]";

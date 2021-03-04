@@ -55,3 +55,11 @@ class AdminUser(AbstractUser, SoftDeletionModel):
     def __str__(self):
         return self.email
 
+
+class UserInvitationEmailTemplate(models.Model):
+    body = models.TextField(null=True, blank=True)
+    logo = models.ImageField(null=True, blank=True, upload_to='images/logos')
+    subject = models.CharField(max_length=100, null=True, blank=True)
+    header = models.CharField(max_length=100, null=True, blank=True)
+    button_text = models.CharField(max_length=50, null=True, blank=True)
+    sms_message = models.TextField(null=True, blank=True)

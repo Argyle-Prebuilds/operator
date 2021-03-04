@@ -14,6 +14,7 @@ import {AdminUserList} from "./components/admin/adminList/AdminUserList";
 import {AccountActivate} from "./components/auth/AccountActivate";
 import {ArgyleAPIKeys} from "./components/admin/apiKeys/ArgyleAPIKeys";
 import {HomepageSettings} from "./components/admin/homepage/HomepageSettings";
+import {UserEditsTabs} from "./components/admin/userEdits/UserEditsTabs";
 
 
 const AdminRouteComponent = ({path, children, auth}) => {
@@ -53,7 +54,9 @@ export default function App() {
                 <AdminRouteComponent path="/admin/homepage/" auth={true}>
                     <HomepageSettings/>
                 </AdminRouteComponent>
-
+                <AdminRouteComponent path="/admin/user-edits/" auth={true}>
+                    <UserEditsTabs/>
+                </AdminRouteComponent>
                 <AdminRouteComponent path="/admin/" auth={true}>
                     <Redirect to="/admin/accounts/"/>
                 </AdminRouteComponent>

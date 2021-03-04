@@ -22,6 +22,7 @@ urlpatterns = [
                   path('admin/', admin.site.urls),
                   path('auth/', include('users.urls.auth_urls')),
                   path('users/', include('users.urls.users_urls')),
+                  path('templates/', include('users.urls.templates_urls')),
                   path('integrations/', include('api_keys.urls')),
                   path('homepage/', include('homepage.urls')),
 
