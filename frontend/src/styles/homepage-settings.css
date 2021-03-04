@@ -1,0 +1,17 @@
+.MuiFormControlLabel-root.switch-box.MuiFormControlLabel-labelPlacementStart {
+  justify-content: flex-end;
+  margin: 10px 0;
+}
+
+.switch-box > .MuiTypography-root.MuiFormControlLabel-label.MuiTypography-body1 {
+  font-weight: bold;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.editor-box {
+  border: 1px solid var(--grey-color);
+  border-radius: 4px;
+  min-height: 200px;
+  padding: 10px;
+}
