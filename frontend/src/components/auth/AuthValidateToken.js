@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { validateTokenService } from "../../services/baseServices";
+import { validateTokenService } from "../../services/BaseServices";
 import "../../styles/index.css";
 import {useHistory} from "react-router-dom";
 import {LeftNavBar} from "../admin/navbar/LeftNavBar";

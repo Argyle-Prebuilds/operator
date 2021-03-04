@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {useParams} from "react-router-dom";
-import {activateAccountService} from "../../services/baseServices";
+import {activateAccountService} from "../../services/BaseServices";
 import "../../styles/index.css";
 import {
     Box,

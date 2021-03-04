@@ -22,3 +22,7 @@ export const passwordUpdateService = (user_id, data) => {
 export const validateTokenService = (data) => {
   return baseAPI.post(`${API_URL}/auth/validate-token/`, data)
 }
+
+export const getHomepageSettings = () => {
+  return baseAPI.get(`${API_URL}/homepage/homepage-settings/`);
+};

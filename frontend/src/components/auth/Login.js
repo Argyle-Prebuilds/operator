@@ -9,7 +9,7 @@ import {
 } from "@material-ui/core";
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import {loginService} from "../../services/baseServices";
+import {loginService} from "../../services/BaseServices";
 import "../../styles/index.css";
 import {useHistory} from "react-router-dom";
 import {LOGIN_INITIAL_STATE} from "../../consts";

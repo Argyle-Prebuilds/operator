@@ -10,7 +10,7 @@ import {
 import SettingsBackupRestoreIcon
     from '@material-ui/icons/SettingsBackupRestore';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import {passwordResetService} from "../../services/baseServices";
+import {passwordResetService} from "../../services/BaseServices";
 import "../../styles/index.css";
 import {PASSWORD_RESET_INITIAL_STATE} from "../../consts";
 import {

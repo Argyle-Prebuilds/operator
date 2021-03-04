@@ -10,7 +10,7 @@ import {
 import CircularProgress from '@material-ui/core/CircularProgress';
 import {useParams} from "react-router-dom";
 import EditIcon from '@material-ui/icons/Edit';
-import {passwordUpdateService} from "../../services/baseServices";
+import {passwordUpdateService} from "../../services/BaseServices";
 import "../../styles/index.css";
 import {PASSWORD_INITIAL_STATE} from "../../consts";
 import {

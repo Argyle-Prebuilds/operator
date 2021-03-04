@@ -27,3 +27,7 @@ export const updateAPIKey = (id, data = {}) => {
 export const addAPIKey = (data = {}) => {
   return authAPI.post(`${API_URL}/integrations/api-keys/`, data);
 };
+
+export const setHomepageSettings = (data = {}) => {
+  return authAPI.post(`${API_URL}/homepage/homepage-settings/`, data);
+};
