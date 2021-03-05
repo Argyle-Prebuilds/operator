@@ -37,6 +37,7 @@ db:
 ### 3. Build and run backend app
 #### Local
 ```
+cd api
 brew install pyenv
 brew update
 brew upgrade pyenv
@@ -53,12 +54,17 @@ source ./.venv/bin/activate
 pip install --upgrade pip setuptools
 pip install --upgrade -r bkmrk-standalone/requirements.txt
 
+# run backend
 python manage.py migrate
 python manage.py collectstatic
 python manage.py createsuperuser
 
 python manage.py runserver
 
+# run frontend
+cd frontend
+npm install
+npm start
 ```
 
 #### Docker
