@@ -132,7 +132,7 @@ export const AdminUserList = () => {
 
   return (
     <PaperContainer title="Admin List">
-      <div>
+      <div className="negative-margin-top">
         <div>
           {!userList.length && (
             <Typography variant="h6" align="center"

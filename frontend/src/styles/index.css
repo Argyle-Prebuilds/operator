@@ -162,3 +162,10 @@ code {
     font-size: 14px;
     font-family: inherit;
 }
+.negative-margin-top{
+    margin-top: -20px;
+}
+
+.MuiTableCell-head.table-head {
+    font-weight: bold ;
+}

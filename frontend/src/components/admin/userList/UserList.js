@@ -155,7 +155,7 @@ export const UserList = () => {
 
   return (
     <PaperContainer title="User Link List">
-      <div>
+      <div className="negative-margin-top">
         {generateTable()}
       </div>
       <ConfirmDialog
