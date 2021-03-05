@@ -17,6 +17,8 @@ import {HomepageSettings} from "./components/admin/homepage/HomepageSettings";
 import {UserEditsTabs} from "./components/admin/userEdits/UserEditsTabs";
 import {LinkGenerator} from "./components/admin/linkGenerator/LinkGenerator";
 import {Homepage} from "./components/user/Homepage";
+import {UserList} from "./components/admin/userList/UserList";
+import {DistributionDetails} from "./components/admin/userList/DistributionDetails";
 
 
 const AdminRouteComponent = ({path, children, auth}) => {
@@ -66,6 +68,12 @@ export default function App() {
                 </AdminRouteComponent>
                 <AdminRouteComponent path="/admin/generator" auth={true}>
                     <LinkGenerator/>
+                </AdminRouteComponent>
+                <AdminRouteComponent path="/admin/user-list/distribution-detail/:uuid/" auth={true}>
+                    <DistributionDetails/>
+                </AdminRouteComponent>
+                <AdminRouteComponent path="/admin/user-list" auth={true}>
+                    <UserList/>
                 </AdminRouteComponent>
                 <AdminRouteComponent path="/admin/" auth={true}>
                     <Redirect to="/admin/accounts/"/>

@@ -62,3 +62,7 @@ export const resendUserLinkSMS = (userUUID) => {
 export const deleteUserLinkService = (userUUID) => {
     return authAPI.delete(`${API_URL}/generator/user-link/delete/${userUUID}/`)
 }
+
+export const getDistributions = (userUUID) => {
+    return authAPI.get(`${API_URL}/generator/user-link/distribution-detail/${userUUID}/`)
+}

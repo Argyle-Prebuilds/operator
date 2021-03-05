@@ -50,3 +50,23 @@ export const OPTIONAL_GENERATOR_FIELDS = {
     set_integration: false,
     run_deposit_changed: false,
 }
+
+export const PAGINATION_INITIAL_STATE = {
+    page: 1,
+    pageCount: 0,
+    itemsPerPage: 5,
+}
+
+
+export const LinkedAccountStatus = {
+    ADDED: 1,
+    CONNECTED: 2,
+    FAILED: 3,
+    REMOVED: 4
+}
+
+export const LinkedPayAllocationStatus = {
+    ADDED: 1,
+    UPDATED: 2,
+    REMOVED: 3
+}
