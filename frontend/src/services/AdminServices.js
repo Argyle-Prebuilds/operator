@@ -47,3 +47,18 @@ export const generateUserLink = (data) => {
 export const getDataPartners = (params) => {
     return authAPI.get(`${API_URL}/generator/data-partners/`, {params})
 }
+export const getUserLinks = () => {
+    return authAPI.get(`${API_URL}/generator/user-link`)
+}
+
+export const resendUserLinkEmail = (userUUID) => {
+    return authAPI.post(`${API_URL}/generator/user-link/resend-email/${userUUID}/`)
+}
+
+export const resendUserLinkSMS = (userUUID) => {
+    return authAPI.post(`${API_URL}/generator/user-link/resend-sms/${userUUID}/`)
+}
+
+export const deleteUserLinkService = (userUUID) => {
+    return authAPI.delete(`${API_URL}/generator/user-link/delete/${userUUID}/`)
+}

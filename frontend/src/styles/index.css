@@ -4,6 +4,7 @@
 @import "dialogs.css";
 @import "api-integrations.css";
 @import "generator.css";
+@import "user-homepage.css";
 
 :root {
     --grey-color: #d9d9d9;
@@ -124,9 +125,10 @@ code {
     padding: 20px;
 }
 
-.actions-cell{
+.actions-cell {
     height: 40px;
 }
+
 .margin-top-25 {
     margin-top: 25px !important;
 }

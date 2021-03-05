@@ -1,4 +1,4 @@
-include ./tools/env/dev.env
+include ./tools/env/.env
 export
 
 default: run

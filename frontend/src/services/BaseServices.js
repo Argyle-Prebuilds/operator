@@ -26,3 +26,19 @@ export const validateTokenService = (data) => {
 export const getHomepageSettings = () => {
   return baseAPI.get(`${API_URL}/homepage/homepage-settings/`);
 };
+
+export const getArgylePluginKey = () => {
+  return baseAPI.get(`${API_URL}/integrations/argyle-plugin/`);
+};
+
+export const getUserLinkData = (userUUID) => {
+  return baseAPI.get(`${API_URL}/generator/user-link-data/${userUUID}`);
+};
+
+export const updateUserLinkData = (userUUID, data) => {
+  return baseAPI.put(`${API_URL}/generator/user-link-data/${userUUID}/`, data);
+};
+
+export const generateNewUserToken = (userUUID) => {
+  return baseAPI.post(`${API_URL}/generator/argyle-token/${userUUID}/`);
+};

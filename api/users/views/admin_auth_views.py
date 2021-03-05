@@ -90,7 +90,7 @@ class PasswordUpdate(generics.UpdateAPIView):
         Expected payload:
         Method: POST
         Data: {
-            "user_id": "((userID))",
+            "user_id": "((UUID))",
             "password": "((String))",
             "password_confirmed": "((String))"
         }
