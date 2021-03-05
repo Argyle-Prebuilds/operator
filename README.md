@@ -21,7 +21,7 @@ and also display Argyle accounts assigned to user.
 ## How to run this app?
 
 ### 1. Set all environment variables
-Go to the `tools/env directory`, create a new `.env` file inside, and copy the contents of the `.env.example` file into `.env`. 
+Go to the `tools/env` directory, create a new `.env` file inside, and copy the contents of the `.env.example` file into `.env`. 
 Fill in all empty attributes values.
 
 ### 2. Set database credentials in the docker-compose.yml file
