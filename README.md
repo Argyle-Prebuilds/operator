@@ -1,4 +1,5 @@
 ## Table of contents
+* [Demo](#demo)
 * [Introduction](#introduction)
 * [Structure](#structure)
 * [Important notes](#important-notes)
@@ -6,7 +7,39 @@
 * [Backend endpoints - Django](#backend-endpoints---django)
 * [Available pages - React](#available-pages---react)
 * [Extra](#extra)
-* [Demo](#demo)
+
+## Demo
+* **Homepage Settings (admin view)**
+
+![Homepage Settings demo](https://user-images.githubusercontent.com/15730512/110350186-be571e80-8033-11eb-9dd7-f2a2ca0c496e.gif)
+
+![Homepage Settings](https://user-images.githubusercontent.com/15730512/110350491-10983f80-8034-11eb-8422-bf959ae40ff3.png)
+
+ 
+* **Admins List (admin view)**
+
+![Admins List demo](https://user-images.githubusercontent.com/15730512/110349845-6a4c3a00-8033-11eb-9204-b357b7aa3f0e.gif)
+
+* **Generating User Links (admin view)**
+
+![Generator demo](https://user-images.githubusercontent.com/15730512/110350111-b13a2f80-8033-11eb-9703-3fa2ef79ea47.gif)
+
+![Generator view](https://user-images.githubusercontent.com/15730512/110350780-59e88f00-8034-11eb-8217-c095ca3aea6f.png)
+
+* **Users List (admin view)**
+
+![Users List](https://user-images.githubusercontent.com/15730512/110350908-7edd0200-8034-11eb-973e-7d2c6ac01dc5.png)
+![Pay Allocations view](https://user-images.githubusercontent.com/15730512/110351002-a0d68480-8034-11eb-8257-84adf05b95ea.png)
+
+
+* **Mail & SMS Templates (admin view)**
+
+![Mail and Sms Templates demo](https://user-images.githubusercontent.com/15730512/110350290-d6c73900-8033-11eb-80b3-4f60ad573c99.gif)
+
+* **Homepage**
+
+![User Homepage](https://user-images.githubusercontent.com/15730512/110350316-e3e42800-8033-11eb-9d87-3bc0677ad9e5.gif)
+
 
 ## Introduction
 Argyle Operator is an admin tool, that allows them to generate landing page with Argyle Link, send email and sms messages to users 
@@ -147,39 +180,4 @@ Creating superuser
 ```make app app_name=<app_name>
 make createsuperuser
 ```
-
-## Demo
-Here are some demos from app.
-
-
-* **Homepage Settings (admin view)**
-
-![Homepage Settings demo](https://user-images.githubusercontent.com/15730512/110350186-be571e80-8033-11eb-9dd7-f2a2ca0c496e.gif)
-
-![Homepage Settings](https://user-images.githubusercontent.com/15730512/110350491-10983f80-8034-11eb-8422-bf959ae40ff3.png)
-
- 
-* **Admins List (admin view)**
-
-![Admins List demo](https://user-images.githubusercontent.com/15730512/110349845-6a4c3a00-8033-11eb-9204-b357b7aa3f0e.gif)
-
-* **Generating User Links (admin view)**
-
-![Generator demo](https://user-images.githubusercontent.com/15730512/110350111-b13a2f80-8033-11eb-9703-3fa2ef79ea47.gif)
-
-![Generator view](https://user-images.githubusercontent.com/15730512/110350780-59e88f00-8034-11eb-8217-c095ca3aea6f.png)
-
-* **Users List (admin view)**
-
-![Users List](https://user-images.githubusercontent.com/15730512/110350908-7edd0200-8034-11eb-973e-7d2c6ac01dc5.png)
-![Pay Allocations view](https://user-images.githubusercontent.com/15730512/110351002-a0d68480-8034-11eb-8257-84adf05b95ea.png)
-
-
-* **Mail & SMS Templates (admin view)**
-
-![Mail and Sms Templates demo](https://user-images.githubusercontent.com/15730512/110350290-d6c73900-8033-11eb-80b3-4f60ad573c99.gif)
-
-* **Homepage**
-
-![User Homepage](https://user-images.githubusercontent.com/15730512/110350316-e3e42800-8033-11eb-9d87-3bc0677ad9e5.gif)
 
