@@ -1,0 +1,152 @@
+name: 'Terraform'
+
+on:
+  workflow_dispatch:
+    inputs:
+      domain_name:
+        description: 'Domain name'
+        required: true
+        default: ''
+      zone_name:
+        description: 'DNS zone name'
+        required: true
+        default: ''
+      project_id:
+        description: 'Google Cloud project ID'
+        required: true
+        default: ''
+      terraform_workspace:
+        description: 'Terraform Cloud workspace'
+        required: true
+        default: ''
+      terraform_organization:
+        description: 'Terraform Cloud Organization ID'
+        required: true
+        default: ''
+
+jobs:
+  terraform:
+    name: 'Terraform'
+    runs-on: ubuntu-latest
+    environment: production
+
+    # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@master
+        with:
+          project_id: ${{ github.event.inputs.project_id }}
+          service_account_key: ${{ secrets.GOOGLE_CREDENTIALS }}
+          export_default_credentials: true
+
+      - name: Enable google services
+        run: gcloud services enable sqladmin.googleapis.com dns.googleapis.com compute.googleapis.com
+
+      - name: Install SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 400 ~/.ssh/id_rsa
+          ls -al ~/.ssh/id_rsa
+          ssh-keygen -y -f ~/.ssh/id_rsa > ~/.ssh/id_rsa.pub
+
+      # Checkout the repository to the GitHub Actions runner
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 1.0.0
+          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+          terraform_wrapper: false
+
+      - name: Prepare Terraform Cloud
+        run: |
+          echo '
+            workspaces { name = "${{ github.event.inputs.terraform_workspace }}" }
+            organization="${{ github.event.inputs.terraform_organization }}"' > backend.hcl && cat backend.hcl && \
+          echo '{
+            "data": {
+              "attributes": {
+                "name": "${{ github.event.inputs.terraform_workspace }}",
+                "execution-mode": "local"
+              },
+              "type": "workspaces"
+            }
+          }' > workspace.json && \
+          curl \
+            --header "Authorization: Bearer ${{ secrets.TF_API_TOKEN }}" \
+            --header "Content-Type: application/vnd.api+json" \
+            --request POST \
+            --data @workspace.json \
+            https://app.terraform.io/api/v2/organizations/${{ github.event.inputs.terraform_organization }}/workspaces
+        working-directory: tools/deployment/production/infrastructure/
+
+      # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
+      - name: Terraform Init
+        run: terraform init -backend-config=backend.hcl
+        working-directory: tools/deployment/production/infrastructure/
+        env:
+          TF_VAR_terraform_organization: ${{ github.event.inputs.terraform_organization }}
+
+      - name: Terraform Plan
+        run: terraform plan -lock=false
+        working-directory: tools/deployment/production/infrastructure/
+        env:
+          TF_VAR_ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          TF_VAR_credentials_file: ${{ secrets.GOOGLE_CREDENTIALS }}
+          TF_VAR_project: ${{ github.event.inputs.project_id }}
+          TF_VAR_terraform_workspace: ${{ github.event.inputs.terraform_workspace }}
+          TF_VAR_dns_zone: ${{ github.event.inputs.zone_name }}
+          TF_VAR_domain_name: ${{ github.event.inputs.domain_name }}
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve
+        working-directory: tools/deployment/production/infrastructure/
+        env:
+          TF_VAR_ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          TF_VAR_credentials_file: ${{ secrets.GOOGLE_CREDENTIALS }}
+          TF_VAR_project: ${{ github.event.inputs.project_id }}
+          TF_VAR_terraform_workspace: ${{ github.event.inputs.terraform_workspace }}
+          TF_VAR_dns_zone: ${{ github.event.inputs.zone_name }}
+          TF_VAR_domain_name: ${{ github.event.inputs.domain_name }}
+
+      - name: Terraform get VM IP
+        id: get_vm_ip
+        run: echo "::set-output name=vm_ip::$(terraform output -json | jq -r .ip.value)"
+        working-directory: tools/deployment/production/infrastructure/
+
+      - name: Dump ENV vars to files
+        run: |
+          echo "${{ secrets.API_PROD_ENV }}" > tools/deployment/production/provision/remote/api.prod.env
+          echo "${{ secrets.FRONTEND_PROD_ENV }}" > tools/deployment/production/provision/remote/frontend.prod.env
+
+      - name: Copy ansible script to root dir
+        run: |
+          pwd
+          cp ./tools/deployment/production/provision/install.yml .
+          ls -al .
+        working-directory: .
+
+      - name: Prepare server
+        uses: dawidd6/action-ansible-playbook@v2
+        env:
+          TF_VAR_ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          TF_VAR_ssh_public_key: ${{ secrets.SSH_PUBLIC_KEY }}
+        with:
+          playbook: ./install.yml
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          directory: .
+          options: |
+            --extra-vars "domain_name=${{ github.event.inputs.domain_name }}"
+            --verbose
+            --user ubuntu
+            --inventory ${{ steps.get_vm_ip.outputs.vm_ip }},
+            --extra-vars 'pub_key=~/.ssh/id_rsa.pub'
+            --timeout 800

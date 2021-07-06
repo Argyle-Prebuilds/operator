@@ -1,0 +1,36 @@
+version: "3.7"
+
+x-app-common: &app-common
+  build:
+    context: .
+    dockerfile: tools/docker/api/Dockerfile
+  env_file: ./api.prod.env
+  depends_on:
+    - db
+  volumes:
+    - ./api:/app
+    - ./mediafiles:/mediafiles
+    - ./tools/docker/api/entrypoint.sh:/entrypoint.sh
+
+services:
+  api:
+    <<: *app-common
+    working_dir: /app
+    entrypoint: /entrypoint.sh
+    ports:
+      - "60012:8000"
+    restart: on-failure
+
+  db:
+    image: postgres:13-alpine
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: db
+    restart: on-failure
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+volumes:
+  postgres_data:
+    external: true
