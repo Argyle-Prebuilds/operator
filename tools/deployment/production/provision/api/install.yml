@@ -1,0 +1,139 @@
+- hosts: all
+  remote_user: ubuntu
+  gather_facts: no
+
+  tasks:
+    - name: Wait for host
+      wait_for:
+        host: "{{ inventory_hostname }}"
+        port: 22
+        sleep: 10
+        timeout: 300
+      delegate_to: localhost
+
+    - name: Install aptitude using apt
+      apt: name=aptitude state=latest update_cache=yes force_apt_get=yes
+      become: true
+
+    - name: Install required system packages
+      apt: name={{ item }} state=latest update_cache=yes
+      loop: [ 'apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common', 'python3-pip', 'virtualenv', 'python3-setuptools', 'gettext-base', 'npm' ]
+      become: true
+
+    - name: Install Docker Module for Python
+      pip:
+        name: docker,docker-compose
+      become: true
+
+    - name: Ensure nginx is at the latest version
+      apt: name=nginx state=latest
+      become: true
+
+    - name: Create project directory
+      file:
+        path: /home/ubuntu/project
+        state: directory
+
+    - name: Copy project bootstrap files
+      copy:
+        src: tools/deployment/production/provision/remote/
+        dest: /home/ubuntu/project
+
+    - name: Copy api files
+      copy:
+        src: ./api
+        dest: /home/ubuntu/project/
+
+    - name: Copy frontend files
+      copy:
+        src: ./frontend
+        dest: /home/ubuntu/project/
+
+    - name: Copy docker files
+      copy:
+        src: ./tools/docker
+        dest: /home/ubuntu/project/tools/
+
+    - name: Add Docker GPG apt Key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+      become: true
+
+    - name: Add Docker Repository
+      apt_repository:
+        repo: deb https://download.docker.com/linux/ubuntu focal stable
+        state: present
+      become: true
+
+    - name: Update apt and install docker-ce
+      apt: update_cache=yes name=docker-ce state=latest
+      become: true
+
+    - name: Add remote ubuntu user to docker group
+      user:
+        name: ubuntu
+        groups: docker
+        append: yes
+      become: true
+
+    - name: Process nginx template
+      ansible.builtin.shell: DOMAIN_NAME={{ domain_name }} envsubst < /home/ubuntu/project/project.prod.nginx.conf.template | sed -e 's/§/$/g' > /home/ubuntu/project/project.prod.nginx.conf
+      args:
+        executable: /bin/bash
+
+    - name: Wait for docker service
+      service:
+        name: docker
+        state: started
+      register: docker_service
+      until: docker_service.status.ActiveState == "active"
+      retries: 10
+      delay: 20
+
+    - name: Clean up docker containers
+      community.docker.docker_compose:
+        project_src: /home/ubuntu/project/
+        state: absent
+        files:
+          - docker-compose.prod.yml
+
+    - name: Create a postgres_data volume
+      community.docker.docker_volume:
+        name: postgres_data
+
+    - name: Make entrypoint.sh executable
+      ansible.builtin.file:
+        path: /home/ubuntu/project/tools/docker/api/entrypoint.sh
+        mode: '0755'
+
+    - name: Create and start docker containers
+      community.docker.docker_compose:
+        project_src: /home/ubuntu/project/
+        build: yes
+        files:
+          - docker-compose.prod.yml
+      register: output
+
+    - name: Build frontend
+      ansible.builtin.shell: |
+        source /home/ubuntu/project/frontend.prod.env
+        cd /home/ubuntu/project/frontend
+        env
+        npm install
+        npm run build
+      args:
+        executable: /bin/bash
+
+    - name: Create symlink
+      file:
+        src: /home/ubuntu/project/project.prod.nginx.conf
+        dest: /etc/nginx/sites-enabled/project.prod.nginx.conf
+        state: link
+      become: yes
+
+    - name: Restart nginx
+      service:
+        name: nginx
+        state: restarted
+      become: yes

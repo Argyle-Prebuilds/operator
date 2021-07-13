@@ -1,0 +1,40 @@
+ upstream api {
+    server localhost:60012;
+}
+
+server {
+    server_name
+        www.$DOMAIN_NAME
+        $DOMAIN_NAME;
+
+    include           /etc/nginx/mime.types;
+    server_tokens off;
+    root /home/ubuntu/project/frontend/build;
+    location = /favicon.ico { access_log off; log_not_found off; }
+    try_files §uri  /index.html;
+}
+
+server {
+    server_name
+        api.$DOMAIN_NAME;
+
+    include           /etc/nginx/mime.types;
+    server_tokens off;
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+
+    location / {
+
+        proxy_set_header X-Real-IP  §remote_addr;
+        proxy_set_header X-Forwarded-For §remote_addr;
+        proxy_set_header Host §host;
+        proxy_pass       http://api;
+    }
+
+    location /media {
+        add_header Access-Control-Allow-Origin "https://$DOMAIN_NAME" always;
+        add_header Access-Control-Allow-Methods "GET,OPTIONS" always;
+
+        alias /home/ubuntu/project/mediafiles/;
+    }
+}
