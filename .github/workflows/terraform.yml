@@ -44,7 +44,7 @@ jobs:
           export_default_credentials: true
 
       - name: Enable google services
-        run: gcloud services enable sqladmin.googleapis.com dns.googleapis.com compute.googleapis.com
+        run: gcloud services enable dns.googleapis.com compute.googleapis.com
 
       - name: Install SSH key
         run: |
