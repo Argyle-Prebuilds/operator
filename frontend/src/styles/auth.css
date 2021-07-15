@@ -1,21 +1,57 @@
-.link-color {
-  color: #303A66;
-  text-decoration: none;
+.MuiCard-root {
+  overflow: visible !important;
+}
+
+.card-auth {
+  border: none;
+  width: 260px;
+  margin: 0 auto 1.5em;
+  padding: 30px 68px;
+}
+
+.margin-top-25 {
+  margin-top: 25px !important;
 }
 
 .link-disable-visited:visited {
-  color: #303A66;
+  color: black;
   text-decoration: none;
 }
 
-.MuiButton-contained.button-auth {
-  background-color: #323a64 ;
+.grey-font {
+  color: #AAAAAA;
 }
 
-.spinner-container {
-  height: 40px; /* prevents expansion when CircularProgress component is rendered inside */
+.input-container {
+  width: initial !important;
+  position: relative;
 }
 
-.button-min-width + .button-min-width {
-  margin-left: 20px;
+.password-toggle {
+  position: absolute;
+  top: 18px;
+  right: 2px;
+  padding: 9px;
+  border-radius: 0 3px 3px 0;
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  z-index: 1;
+  background-color: white;
+}
+
+.top-icon {
+  width: 60px !important;
+  height: 60px !important;
+  background-color: #F9FBFC;
+  border-radius: 50%;
+  padding: 20px;
+  /* box-shadow: 0 0 12px 1px rgba(0, 0, 0, 0.1); */
+  display: block !important;
+  margin: -80px auto 0 auto;
+}
+
+.right-icon {
+  width: 16px;
+  margin-left: 10px;
 }

@@ -71,33 +71,38 @@ export const ArgyleAPIKeys = () => {
 
   const {client_id, client_secret, plugin_key, is_sandbox_mode} = inputForm
 
-  return <PaperContainer title="Api Keys">
-    <div className="paper-child-container">
-      <h3 className="header">plugin_key</h3>
+  return (
+    <PaperContainer title="Api Keys">
       <TextField
         value={plugin_key}
-        name='plugin_key'
+        name="plugin_key"
+        variant="outlined"
+        label="plugin_key"
+        classes={{ root: "input-container" }}
         onChange={updateFormState}
         onKeyPress={(evt) => onEnterPressed(evt, saveChanges)}
         required
         error={!!errorState.plugin_key}
         helperText={errorState.plugin_key}
       />
-      <h3 className="header">client_id</h3>
-
       <TextField
         value={client_id}
-        name='client_id'
+        name="client_id"
+        variant="outlined"
+        label="client_id"
+        classes={{ root: "input-container" }}
         onChange={updateFormState}
         onKeyPress={(evt) => onEnterPressed(evt, saveChanges)}
         required
         error={!!errorState.client_id}
         helperText={errorState.client_id}
       />
-      <h3 className="header">client_secret</h3>
       <TextField
         value={client_secret}
-        name='client_secret'
+        name="client_secret"
+        variant="outlined"
+        label="client_secret"
+        classes={{ root: "input-container" }}
         onChange={updateFormState}
         onKeyPress={(evt) => onEnterPressed(evt, saveChanges)}
         required
@@ -105,21 +110,34 @@ export const ArgyleAPIKeys = () => {
         helperText={errorState.client_secret}
       />
 
-      <FormControlLabel className="switch-box margin-top-30" control={
-        <Switch
-          checked={is_sandbox_mode}
-          onChange={(event) => updateFormState(event)}
-          color="primary"
-          name="is_sandbox_mode"
-        />} label="Is sandbox mode?" labelPlacement="start">
-      </FormControlLabel>
+      <FormControlLabel
+        className="switch-box margin-top-30"
+        control={
+          <Switch
+            checked={is_sandbox_mode}
+            onChange={(event) => updateFormState(event)}
+            color="primary"
+            name="is_sandbox_mode"
+          />
+        }
+        label="Sandbox mode"
+        labelPlacement="start"
+      ></FormControlLabel>
 
       <div className="add-key-pair-btn">
-        <Button onClick={saveChanges} color='primary' variant="contained">
-          {loading ?
-            <CircularProgress size={30} color='inherit'/> : "Save keys"}
+        <Button
+          onClick={saveChanges}
+          className="homePageSaveButton"
+          color="primary"
+          variant="contained"
+        >
+          {loading ? (
+            <CircularProgress size={30} color="inherit" />
+          ) : (
+            "Save keys"
+          )}
         </Button>
       </div>
-    </div>
-  </PaperContainer>
+    </PaperContainer>
+  );
 }

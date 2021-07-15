@@ -4,6 +4,12 @@
   justify-content: space-between;
   align-items: flex-start;
 }
+.row-div-start {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
 
 .half-width-div {
   width: 45%;
@@ -16,12 +22,12 @@
 .extra-info-div {
   display: block;
   width: 100%;
-  /*border: 1px solid var(--grey-color);*/
-  padding: 10px 0 0 30px;
+  padding: 10px 0 24px 0;
+  border-bottom: 1px solid #E9EEF4;
 }
 
 .checkbox-div {
-  width: 30%;
+  margin-right: 78px;
 }
 
 .multirows-div {

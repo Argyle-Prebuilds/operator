@@ -4,6 +4,8 @@ import {
     Switch,
     Route, Redirect
 } from "react-router-dom";
+import "./styles/custom-mui.css";
+import "./styles/styles-global.css";
 import Container from "@material-ui/core/Container";
 import {Login} from "./components/auth/Login";
 import {AuthValidateToken} from "./components/auth/AuthValidateToken"
@@ -24,11 +26,11 @@ import {DistributionDetails} from "./components/admin/userList/DistributionDetai
 const AdminRouteComponent = ({path, children, auth}) => {
     return <Route path={path}>
         {auth && <AuthValidateToken/>}
-        <Container className="index-container">
+        <div className="index-container">
             <div className="full-width-div">
                 {children}
             </div>
-        </Container>
+        </div>
     </Route>
 }
 

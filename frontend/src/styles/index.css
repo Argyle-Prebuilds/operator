@@ -28,11 +28,16 @@ code {
 
 .MuiContainer-root.index-container {
     /*display: flex;*/
-    width: 100%;
+     width: 100vw;
+    height: 100vh;
 }
-
+.index-container {
+    /*display: flex;*/
+     width: 100vw;
+    height: 100vh;
+}
 .main-container {
-    padding: 20px 0;
+    padding: 28px 0;
     width: 75%;
     margin: auto;
 }
@@ -47,8 +52,10 @@ code {
 }
 
 .paper-container {
-    margin: 30px 0;
-    padding: 15px 35px 40px 35px;
+    margin: 0 0 0 40px;
+    padding: 15px 40px 40px 40px;
+    display: flex;
+    flex-direction: column;
 }
 
 .page-title {
@@ -118,13 +125,6 @@ code {
     min-width: 0;
 }
 
-.card-auth {
-    border: none;
-    width: 350px;
-    margin: auto;
-    padding: 20px;
-}
-
 .actions-cell {
     height: 40px;
 }
@@ -153,7 +153,7 @@ code {
 
 .MuiFormControlLabel-root.switch-box.MuiFormControlLabel-labelPlacementStart {
     justify-content: flex-end;
-    margin: 10px 0;
+    margin: 0 0 18px;
 
 }
 

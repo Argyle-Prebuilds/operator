@@ -1,0 +1,426 @@
+body {
+  background-color: #F2F6F9;
+  font-family: "Inter";
+}
+
+a {
+  color: #6563FF;
+  text-decoration: none !important;
+}
+
+.login-background {
+  width: 100vw;
+  height: 100vh;
+  /* background: url("/src/images/banner-bg.svg") no-repeat center; */
+  background-size: 100% 100%;
+}
+
+.button {
+  cursor: pointer;
+  display: flex;
+}
+
+.button > svg {
+  padding: 14px 0;
+}
+
+::placeholder {
+  color: #6E788F !important;
+  opacity: 1 !important; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #6E788F !important;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: #6E788F !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active
+{
+ -webkit-box-shadow: 0 0 0 30px #fff inset !important;
+}
+
+.flex {
+  width: 100%;
+  display: flex !important;
+  align-items: center;
+}
+
+.flex-right {
+  margin-left: auto;
+}
+
+.initials, .purple-initials {
+  width: 43px;
+  height: 43px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #F2F6F9;
+  border-radius: 50%;
+  color: #6E788F;
+  margin-right: 15px;
+}
+
+.purple-initials {
+  background: #6563FF;
+  color: white;
+}
+
+.table-th-centered {
+  display: flex;
+  align-items: center;
+}
+
+.table-th-centered > svg {
+  margin-left: 5px;
+}
+
+.center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.link-center {
+  justify-content: center;
+  display: flex;
+  color: #6563FF !important;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.page-content-wrapper {
+  margin-left: 250px;
+}
+
+.spinner-container {
+  height: 42px; /* prevents vertical expansion when CircularProgress component is rendered inside */
+}
+
+.total-metric {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  box-sizing: border-box;
+  min-height: 60px;
+  overflow: hidden;
+  padding: 1.3em;
+}
+
+.total-metric:first-child {
+  border-right: 1px solid #E9EEF4;
+}
+
+.basic-container {
+  position: relative;
+  box-sizing: border-box;
+  line-height: 50px; /* Must equal height to center vertically */
+  min-height: 50px;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 1em;
+  padding: 0 !important;
+}
+
+.basic-container .MuiTypography-h5 {
+  padding: 0 20px;
+}
+
+.vertical-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.back-icon-container {
+  position: relative;
+  height: 60px;
+  width: 50px;
+  float: left;
+  line-height: initial;
+}
+
+.cursor-btn {
+  cursor: pointer;
+}
+
+.back-icon {
+  position: absolute;
+  top: 50%;
+}
+
+.padding-v-10 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.height-0 {
+  height: 0;
+}
+
+.large-paper-container {
+  padding: 20px;
+  margin: 20px 10px;
+
+}
+
+.medium-paper-container {
+  margin: 40px auto;
+  position: relative;
+}
+
+.table-row:hover {
+  background: #f4f4f4;
+  cursor: pointer;
+}
+
+.table-row:last-child {
+  border-bottom: 1px solid rgba(224, 224, 224, 1);
+}
+
+.users-table-head {
+  font-weight: bold !important;
+}
+
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0 20px 0;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.align-right {
+  position: absolute !important;
+  right: 30px;
+  top: 14px;
+}
+
+.column {
+  padding: 10px 0 30px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.column-buttons {
+  padding-bottom: 0;
+  gap: 15px;
+  width: 100%;
+}
+
+.close-btn {
+  align-self: flex-end;
+}
+
+.MuiFormControl-root.input-container {
+  margin-bottom: 30px;
+  width: 80% !important;
+}
+
+.MuiDialogTitle-root.dialog-title {
+  text-align: center;
+  padding-top: 0;
+}
+
+.MuiDialogTitle-root.dialog-title .MuiTypography-h6 {
+  font-weight: bold;
+  line-height: 1.5;
+}
+
+.MuiDialogTitle-root.dialog-title.red-title .MuiTypography-h6 {
+  font-weight: bold;
+  color: #ff2626 !important;
+}
+
+button {
+  text-transform: none !important;
+}
+
+.MuiButton-contained.red-button {
+  background-color: red;
+}
+
+.MuiButton-contained.alternate-red-btn, .MuiButton-contained.alternate-red-btn:hover {
+  color: red;
+  background: #fbebec;
+
+}
+
+.gray-input {
+  background-color: #E9EEF4;
+  border-radius: 5px;
+  padding: 6px 18px;
+}
+
+.full-width-input {
+  width: 85%;
+}
+
+.medium-width-input {
+  width: 80%;
+}
+
+.margin-top-20 {
+  margin-top: 20px;
+}
+
+.medium-width-modal {
+  width: 450px !important;
+  margin: auto;
+  padding-bottom: 0;
+}
+
+.padding-left-0 {
+  padding-left: 0 !important;
+}
+
+.padding-bottom-0 {
+  padding-bottom: 0;
+}
+
+.padding-top-7 {
+  padding-top: 7px;
+}
+
+.MuiTooltip-popper {
+  top: 25px !important
+}
+
+.margin-bottom-25 {
+  margin-bottom: 25px;
+}
+
+.textfield-block {
+  width: 100%;
+  margin: auto;
+}
+
+.right-flex-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+
+}
+
+.margin-top-15 {
+  margin-top: 15px;
+}
+
+.padded-input {
+  padding: 15px 0;
+  width: 100%;
+}
+
+
+/*homepage styles*/
+
+.homepage-container {
+  margin: 80px auto;
+  max-width: 1040px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(239, 241, 245);
+}
+
+.logo-box {
+  display: flex;
+  justify-content: center;
+  background: rgb(36, 36, 36);
+  border-radius: 100px;
+  width: 125px;
+  height: 125px;
+  margin: -50px 0 0 0;
+  z-index: 1;
+}
+
+.under-logo {
+  margin-top: -40px;
+}
+
+.inline-boxes-container {
+  display: flex;
+  flex-flow: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.inline-boxes-container > .shadowed-box {
+  width: 201px;
+  padding-bottom: 0;
+}
+
+.shadowed-box {
+  box-shadow: rgb(61 77 108 / 10%) 0px 1rem 2rem 0px;
+  padding: 22px 20px 10px 20px;
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+}
+
+.box-header.MuiTypography-h5 {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.box-text.MuiTypography-h6 {
+  font-size: 16px;
+  margin: 20px 0;
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: 400;
+}
+
+.box-divider.MuiDivider-root {
+  margin: 10px 0 0 0;
+}
+
+.margin-bottom-30 {
+  margin-bottom: 30px;
+}
+
+.homepage-login-btn.MuiButton-contained {
+  background-color: #4c7cda;
+  text-transform: none;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 5px 20px !important;
+}
+
+.no-keys-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+@media screen and (max-width: 522px) {
+  .inline-boxes-container > .shadowed-box {
+    width: 100%;
+  }
+
+  .under-logo {
+    padding-top: 50px;
+    text-align: center;
+  }
+}

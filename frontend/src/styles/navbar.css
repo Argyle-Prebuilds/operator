@@ -6,16 +6,20 @@
 .navbar-link {
   padding: 10px 30px 10px 15px;
   text-decoration: none;
-  color: gray;
+  color: #6E788F;
   font-size: 15px;
-  text-transform: uppercase;
+  text-transform: none;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
 }
 
 .navbar-link.active {
-  color: black;
+  color: #6563FF;
 }
 .menu-container.MuiList-root{
-  margin-top: 15px;
+  margin-top: 70px;
 }
 
 .padded-divider.MuiDivider-root{

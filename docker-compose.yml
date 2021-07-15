@@ -28,9 +28,9 @@ services:
   db:
     image: postgres:13-alpine
     environment:
-      POSTGRES_USER: <postgres_user>
-      POSTGRES_PASSWORD: <postgress_password>
-      POSTGRES_DB: <database_name>
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: db
     ports:
       - 5432:5432
     volumes:
