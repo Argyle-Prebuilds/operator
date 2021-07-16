@@ -6,22 +6,22 @@
 .navbar-link {
   padding: 10px 30px 10px 15px;
   text-decoration: none;
-  color: #6E788F;
+  color: #6e788f;
   font-size: 15px;
   text-transform: none;
-  font-family: Inter;
+  font-family: Inter, sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
 }
 
 .navbar-link.active {
-  color: #6563FF;
+  color: #6563ff;
 }
-.menu-container.MuiList-root{
+.menu-container.MuiList-root {
   margin-top: 70px;
 }
 
-.padded-divider.MuiDivider-root{
+.padded-divider.MuiDivider-root {
   margin: 0 15px;
 }

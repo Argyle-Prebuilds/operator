@@ -9,7 +9,7 @@
 }
 
 .MuiPaper-elevation1 {
-  box-shadow: 0 1px 1px #E0E5EC, 0 5px 6px rgba(164, 170, 178, 0.17) !important;
+  box-shadow: 0 1px 1px #e0e5ec, 0 5px 6px rgba(164, 170, 178, 0.17) !important;
 }
 
 .MuiInputLabel-outlined.MuiInputLabel-shrink {
@@ -17,7 +17,7 @@
 }
 
 .MuiOutlinedInput-notchedOutline {
-  border-color: #D5DCE7 !important;
+  border-color: #d5dce7 !important;
 }
 
 .MuiOutlinedInput-input {
@@ -43,6 +43,10 @@
   width: 279px !important;
 }
 
+.huge-input {
+  width: 75% !important;
+}
+
 .MuiButton-contained {
   box-shadow: none !important;
 }
@@ -53,36 +57,40 @@
 }
 
 .MuiButton-containedPrimary {
-  background-color: #6563FF !important;
+  background-color: #6563ff !important;
   padding: 6px 36px !important;
   height: 40px;
 }
 
+.MuiButton-label {
+  font-family: Inter, sans-serif;
+}
+
 .MuiButton-containedSecondary {
-  background-color: #E72842 !important;
+  background-color: #e72842 !important;
   padding: 6px 36px !important;
   height: 40px;
 }
 
 .MuiTypography-colorPrimary {
-  color: #6563FF !important;
+  color: #6563ff !important;
 }
 
 .MuiTypography-h5 {
-  color: #4C4F56 !important;
-  margin: 1em 0 0.5em !important
+  color: #4c4f56 !important;
+  margin: 1em 0 0.5em !important;
 }
 
 /* Custom Table Styles */
 .MuiTable-root th {
   padding: 25px 15px 25px 20px !important;
-  color: #4C4F56 !important;
+  color: #4c4f56 !important;
   cursor: pointer;
 }
 
 .MuiTable-root td:not(.action-cell) {
   padding: 15px 15px 15px 20px !important;
-  color: #4C4F56 !important;
+  color: #4c4f56 !important;
 }
 
 .MuiTableCell-head {
@@ -91,7 +99,7 @@
 }
 
 th.MuiTableCell-head {
-  color: #4C4F56 !important;
+  color: #4c4f56 !important;
   text-transform: uppercase;
   font-size: 8.5pt;
   font-weight: 600;
@@ -103,7 +111,7 @@ th.MuiTableCell-head {
 }
 
 .MuiSwitch-track {
-  background-color: #D8D7FF !important;
+  background-color: #d8d7ff !important;
   border-radius: 9px !important;
   padding: 2px 3px;
 }
@@ -117,21 +125,64 @@ th.MuiTableCell-head {
   background-color: white !important;
   width: 14px !important;
   height: 14px !important;
-  border-radius: 7px; 
+  border-radius: 7px;
   box-shadow: 0px 1px 1px rgba(29, 29, 27, 0.1) !important;
 }
 
 .MuiSwitch-root {
-    width: 58px !important;
-    height: 38px !important;
-    border-radius: 8px !important;
+  width: 58px !important;
+  height: 38px !important;
+  border-radius: 8px !important;
 }
 .MuiSwitch-colorPrimary.Mui-checked + .MuiSwitch-track {
-    background-color: #6563FF !important;
+  background-color: #6563ff !important;
 }
 
 .homePageSaveButton.MuiButton-containedPrimary {
-  background-color: #6563FF !important;
+  background-color: #6563ff !important;
   padding: 11px 69px !important;
   height: auto;
+}
+
+.MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"] {
+  padding: 0px !important;
+}
+
+.MuiInputBase-input {
+  height: 16px !important;
+}
+.MuiInputLabel-outlined.MuiInputLabel-shrink {
+  width: max-content;
+}
+
+.mail.MuiDivider-root {
+  border: 2px solid #f2f6f9;
+  border-radius: 2px;
+  height: auto;
+}
+
+.active.MuiDivider-root {
+  border: 2px solid #a2a1ff;
+  border-radius: 2px;
+  height: auto;
+  position: relative;
+  top: 4px;
+}
+
+.MuiInputBase-inputMultiline {
+  height: 250px !important;
+  overflow: scroll !important;
+}
+
+.MuiButton-outlined {
+  background: #ffffff;
+  border: 1px solid #6563ff !important;
+  border-radius: 3px !important;
+  font-family: Inter, sans-serif !important;
+  font-weight: 500;
+  font-size: 14px !important;
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.015em;
+  color: #6563ff !important;
 }

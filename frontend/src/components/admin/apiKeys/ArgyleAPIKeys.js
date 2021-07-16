@@ -1,75 +1,82 @@
-import {Button} from "@material-ui/core";
-import React, {useEffect, useState} from "react";
+import { Button } from "@material-ui/core";
+import React, { useEffect, useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Switch from "@material-ui/core/Switch";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import {addAPIKey, getAPIKeys} from "../../../services/AdminServices";
-import {displayErrorNotifications, renderNotification} from "../../../utils/display-error-notifications";
-import {PaperContainer} from "../common/PaperContainer";
-import {onEnterPressed} from "../../../utils/general";
-
+import { addAPIKey, getAPIKeys } from "../../../services/AdminServices";
+import {
+  displayErrorNotifications,
+  renderNotification,
+} from "../../../utils/display-error-notifications";
+import { PaperContainer } from "../common/PaperContainer";
+import { onEnterPressed } from "../../../utils/general";
 
 const INITIAL_FORM_STATE = {
-  client_id: '',
-  client_secret: '',
-  plugin_key: '',
-  is_sandbox_mode: false
-}
+  client_id: "",
+  client_secret: "",
+  plugin_key: "",
+  is_sandbox_mode: false,
+};
 
 export const ArgyleAPIKeys = () => {
-
-  const [inputForm, setInputForm] = useState(INITIAL_FORM_STATE)
-  const [errorState, setErrorState] = useState(INITIAL_FORM_STATE)
-  const [loading, setLoading] = useState(false)
+  const [inputForm, setInputForm] = useState(INITIAL_FORM_STATE);
+  const [errorState, setErrorState] = useState(INITIAL_FORM_STATE);
+  const [loading, setLoading] = useState(false);
 
   const updateFormState = (event) => {
     setInputForm({
       ...inputForm,
-      [event.target.name]: event.target.type === 'checkbox'? event.target.checked  : event.target.value,
+      [event.target.name]:
+        event.target.type === "checkbox"
+          ? event.target.checked
+          : event.target.value,
     });
     setErrorState({
       ...errorState,
-      [event.target.name]: ''
-    })
-  }
+      [event.target.name]: "",
+    });
+  };
 
   const updateErrors = (errors) => {
-    let errorList = {...INITIAL_FORM_STATE};
+    let errorList = { ...INITIAL_FORM_STATE };
     for (let key of Object.keys(errors)) {
       errorList[key] = errors[key];
     }
     setErrorState(errorList);
-  }
+  };
 
   const getKeys = () => {
-    getAPIKeys().then((response) => {
-      setInputForm(response.data)
-    }).catch((error) => {
-      displayErrorNotifications(error)
-    })
-  }
+    getAPIKeys()
+      .then((response) => {
+        setInputForm(response.data);
+      })
+      .catch((error) => {
+        displayErrorNotifications(error);
+      });
+  };
 
-  useEffect(getKeys, [])
+  useEffect(getKeys, []);
   const saveChanges = () => {
-    setLoading(true)
+    setLoading(true);
 
-    addAPIKey(inputForm).then(response => {
-      renderNotification('Keys successfully saved.')
-      setLoading(false)
-    }).catch(error => {
-        setLoading(false)
-        let ignoreKeys = Object.keys(INITIAL_FORM_STATE)
-        ignoreKeys.push('pay_distribution_data')
-        displayErrorNotifications(error, ignoreKeys)
+    addAPIKey(inputForm)
+      .then((response) => {
+        renderNotification("Keys successfully saved.");
+        setLoading(false);
+      })
+      .catch((error) => {
+        setLoading(false);
+        let ignoreKeys = Object.keys(INITIAL_FORM_STATE);
+        ignoreKeys.push("pay_distribution_data");
+        displayErrorNotifications(error, ignoreKeys);
         if (error.response !== undefined) {
-          updateErrors(error.response.data)
+          updateErrors(error.response.data);
         }
-      }
-    )
-  }
+      });
+  };
 
-  const {client_id, client_secret, plugin_key, is_sandbox_mode} = inputForm
+  const { client_id, client_secret, plugin_key, is_sandbox_mode } = inputForm;
 
   return (
     <PaperContainer title="Api Keys">
@@ -111,7 +118,7 @@ export const ArgyleAPIKeys = () => {
       />
 
       <FormControlLabel
-        className="switch-box margin-top-30"
+        className="header switch-box margin-top-30"
         control={
           <Switch
             checked={is_sandbox_mode}
@@ -140,4 +147,4 @@ export const ArgyleAPIKeys = () => {
       </div>
     </PaperContainer>
   );
-}
+};

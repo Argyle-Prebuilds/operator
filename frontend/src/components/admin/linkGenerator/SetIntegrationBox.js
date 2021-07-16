@@ -28,25 +28,38 @@ export const SetIntegrationBox = (props) => {
 
   const searching = useRef(throttle(getPaginatedDataPartners, 3000));
 
-  return <>
-    {integrationError ? null : <div className="extra-info-div">
-      <h3 className="header" id="data_partner_label">Data partner</h3>
-      <Autocomplete
-        style={{paddingRight: '25px'}}
-        name="data_partner_id"
-        onChange={(event, newValue) => {
-          if(newValue){
-            updateState('data_partner_id', newValue.id)
-          }
-        }}
-        onInputChange={(event, newInputValue) => {
-          searching.current(newInputValue);
-        }}
-        options={partners}
-        getOptionLabel={(option) => option.name}
-        renderInput={(params) => <TextField {...params} label="" value={params.id}
-        />}
-      />
-    </div>}
-  </>
+  return (
+    <>
+      {integrationError ? null : (
+        <div className="extra-info-div">
+          <h3 className="header" id="data_partner_label">
+            Set Integrations
+          </h3>
+          <Autocomplete
+            style={{ paddingRight: "25px" }}
+            name="data_partner_id"
+            onChange={(event, newValue) => {
+              if (newValue) {
+                updateState("data_partner_id", newValue.id);
+              }
+            }}
+            onInputChange={(event, newInputValue) => {
+              searching.current(newInputValue);
+            }}
+            options={partners}
+            getOptionLabel={(option) => option.name}
+            renderInput={(params) => (
+              <TextField
+                variant="outlined"
+                label="Data Partner"
+                className="big-input"
+                {...params}
+                value={params.id}
+              />
+            )}
+          />
+        </div>
+      )}
+    </>
+  );
 }

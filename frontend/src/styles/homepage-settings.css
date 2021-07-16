@@ -3,7 +3,8 @@
   margin: 10px 0;
 }
 
-.switch-box > .MuiTypography-root.MuiFormControlLabel-label.MuiTypography-body1 {
+.switch-box
+  > .MuiTypography-root.MuiFormControlLabel-label.MuiTypography-body1 {
   font-weight: bold;
   font-size: 14px;
   font-family: inherit;
@@ -13,5 +14,4 @@
   border: 1px solid var(--grey-color);
   border-radius: 4px;
   min-height: 200px;
-  padding: 10px;
 }

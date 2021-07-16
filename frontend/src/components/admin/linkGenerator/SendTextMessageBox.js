@@ -8,6 +8,9 @@ export const SendTextMessageBox = (props) => {
 
   return (
     <div className="extra-info-div">
+      <h3 className="header" id="data_partner_label">
+        Send text message
+      </h3>
       <TextField
         id="user_phone_number"
         name="user_phone_number"

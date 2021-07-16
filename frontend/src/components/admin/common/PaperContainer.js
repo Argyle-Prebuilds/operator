@@ -4,14 +4,13 @@ import "../../../styles/index.css";
 
 //custom component to use in every subpage of app to have the common styles
 
-export const PaperContainer = ({title, children, mini = false}) => {
-
-  return <div className={`main-container ${mini && 'mini'}`}>
-    <Paper className="paper-container">
-      <div className="page-title">
-        <h2>{title}</h2>
-      </div>
-      {children}
-    </Paper>
-  </div>
-}
+export const PaperContainer = ({ title, children, mini = false }) => {
+  return (
+    <div className={`main-container ${mini && "mini"}`}>
+      <Paper className="paper-container">
+        <h2 className="page-title">{title}</h2>
+        {children}
+      </Paper>
+    </div>
+  );
+};

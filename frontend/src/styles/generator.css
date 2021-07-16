@@ -16,14 +16,14 @@
 }
 
 .small-text {
-  font-size: 10px
+  font-size: 10px;
 }
 
 .extra-info-div {
   display: block;
   width: 100%;
   padding: 10px 0 24px 0;
-  border-bottom: 1px solid #E9EEF4;
+  border-bottom: 1px solid #e9eef4;
 }
 
 .checkbox-div {
@@ -36,4 +36,22 @@
 
 .medium-textfield {
   width: 80%;
+}
+
+.direct-deposit {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.direct-deposit-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.direct-deposit-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 24px;
 }

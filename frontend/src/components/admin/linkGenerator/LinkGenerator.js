@@ -1,47 +1,104 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
-
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
-import {Button} from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import "../../../styles/index.css";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import {GENERATOR_ACCOUNT_INITIAL_STATE, GENERATOR_INITIAL_STATE, OPTIONAL_GENERATOR_FIELDS} from "../../../consts";
-import {generateUserLink} from "../../../services/AdminServices";
-import {displayErrorNotifications, renderNotification} from "../../../utils/display-error-notifications";
-import {PaperContainer} from "../common/PaperContainer";
-import {onEnterPressed} from "../../../utils/general";
-import {SendTextMessageBox} from "./SendTextMessageBox";
-import {SetIntegrationBox} from "./SetIntegrationBox";
-import {RunDepositChangedBox} from "./RunDepositChangedBox";
-
+import { makeStyles } from "@material-ui/core/styles";
+import {
+  GENERATOR_ACCOUNT_INITIAL_STATE,
+  GENERATOR_INITIAL_STATE,
+  OPTIONAL_GENERATOR_FIELDS,
+} from "../../../consts";
+import { generateUserLink } from "../../../services/AdminServices";
+import {
+  displayErrorNotifications,
+  renderNotification,
+} from "../../../utils/display-error-notifications";
+import { PaperContainer } from "../common/PaperContainer";
+import { onEnterPressed } from "../../../utils/general";
+import { SendTextMessageBox } from "./SendTextMessageBox";
+import { SetIntegrationBox } from "./SetIntegrationBox";
+import { RunDepositChangedBox } from "./RunDepositChangedBox";
+import CustomCheckbox from "../common/CustomCheckbox";
+const useStyles = makeStyles({
+  root: {
+    "&:hover": {
+      backgroundColor: "transparent",
+    },
+  },
+  icon: {
+    borderRadius: 3,
+    width: 16,
+    height: 16,
+    boxShadow:
+      "inset 0 0 0 1px rgba(16,22,26,.2), inset 0 -1px 0 rgba(16,22,26,.1)",
+    backgroundColor: "#f5f8fa",
+    backgroundImage:
+      "linear-gradient(180deg,hsla(0,0%,100%,.8),hsla(0,0%,100%,0))",
+    "$root.Mui-focusVisible &": {
+      outline: "2px auto rgba(19,124,189,.6)",
+      outlineOffset: 2,
+    },
+    "input:hover ~ &": {
+      backgroundColor: "#ebf1f5",
+    },
+    "input:disabled ~ &": {
+      boxShadow: "none",
+      background: "rgba(206,217,224,.5)",
+    },
+  },
+  checkedIcon: {
+    backgroundColor: "#6563FF",
+    boxShadow: "none",
+    backgroundImage:
+      "linear-gradient(180deg,hsla(0,0%,100%,.1),hsla(0,0%,100%,0))",
+    "&:before": {
+      display: "block",
+      width: 16,
+      height: 16,
+      backgroundImage:
+        "url(\"data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath" +
+        " fill-rule='evenodd' clip-rule='evenodd' d='M12 5c-.28 0-.53.11-.71.29L7 9.59l-2.29-2.3a1.003 " +
+        "1.003 0 00-1.42 1.42l3 3c.18.18.43.29.71.29s.53-.11.71-.29l5-5A1.003 1.003 0 0012 5z' fill='%23fff'/%3E%3C/svg%3E\")",
+      content: '""',
+    },
+    "input:hover ~ &": {
+      backgroundColor: "#6563FF",
+    },
+  },
+});
 
 export const LinkGenerator = () => {
-  const [generatorState, setGeneratorState] = useState(GENERATOR_INITIAL_STATE)
-  const [generatorErrorState, setGeneratorErrorState] = useState(GENERATOR_INITIAL_STATE)
-  const [optionalFieldsState, setOptionalFieldsState] = useState(OPTIONAL_GENERATOR_FIELDS)
-  const [loading, setLoading] = useState(false)
+  const classes = useStyles();
+  const [generatorState, setGeneratorState] = useState(GENERATOR_INITIAL_STATE);
+  const [generatorErrorState, setGeneratorErrorState] = useState(
+    GENERATOR_INITIAL_STATE
+  );
+  const [optionalFieldsState, setOptionalFieldsState] = useState(
+    OPTIONAL_GENERATOR_FIELDS
+  );
+  const [loading, setLoading] = useState(false);
 
   const {
     user_full_name,
     user_email,
     user_phone_number,
-    pay_distribution_data
-  } = generatorState
+    pay_distribution_data,
+  } = generatorState;
 
   const {
     routing_number,
     account_number,
     allocation_type,
     allocation_value,
-    account_type
-  } = pay_distribution_data
+    account_type,
+  } = pay_distribution_data;
 
   const {
     send_text_message,
     set_integration,
-    run_deposit_changed
-  } = optionalFieldsState
+    run_deposit_changed,
+  } = optionalFieldsState;
 
   const updatePayConfigState = (event) => {
     setGeneratorState({
@@ -49,14 +106,14 @@ export const LinkGenerator = () => {
       pay_distribution_data: {
         ...pay_distribution_data,
         [event.target.name]: event.target.value,
-      }
+      },
     });
     setGeneratorErrorState({
       ...generatorErrorState,
       pay_distribution_data: {
         ...pay_distribution_data,
         [event.target.name]: "",
-      }
+      },
     });
   };
 
@@ -67,8 +124,8 @@ export const LinkGenerator = () => {
     });
     setGeneratorErrorState({
       ...generatorErrorState,
-      [event.target.name]: ''
-    })
+      [event.target.name]: "",
+    });
   };
 
   const updateStateByKey = (key, value) => {
@@ -78,40 +135,40 @@ export const LinkGenerator = () => {
     });
     setGeneratorErrorState({
       ...generatorErrorState,
-      [key]: ''
-    })
-  }
+      [key]: "",
+    });
+  };
 
   const updateErrors = (errors) => {
-    let errorList = {...GENERATOR_INITIAL_STATE};
+    let errorList = { ...GENERATOR_INITIAL_STATE };
     for (let key of Object.keys(errors)) {
       errorList[key] = errors[key];
-      if (key === 'pay_distribution_data') {
-        const pay_distribution_data = errorList[key]
+      if (key === "pay_distribution_data") {
+        const pay_distribution_data = errorList[key];
         for (let key of Object.keys(pay_distribution_data)) {
-          errorList[key] = pay_distribution_data[key]
+          errorList[key] = pay_distribution_data[key];
         }
       }
     }
     setGeneratorErrorState(errorList);
-  }
+  };
 
   const updateOptionalFieldsState = (event) => {
-    if (event.target.name === 'run_deposit_changed' && event.target.checked) {
+    if (event.target.name === "run_deposit_changed" && event.target.checked) {
       setGeneratorState({
         ...generatorState,
         pay_distribution_data: {
           ...pay_distribution_data,
-          allocation_type: 'amount',
-          account_type: 'checking'
-        }
-      })
+          allocation_type: "amount",
+          account_type: "checking",
+        },
+      });
     }
-    if (event.target.name === 'run_deposit_changed' && !event.target.checked) {
+    if (event.target.name === "run_deposit_changed" && !event.target.checked) {
       setGeneratorState({
         ...generatorState,
-        pay_distribution_data: GENERATOR_ACCOUNT_INITIAL_STATE
-      })
+        pay_distribution_data: GENERATOR_ACCOUNT_INITIAL_STATE,
+      });
     }
 
     setOptionalFieldsState({
@@ -121,30 +178,30 @@ export const LinkGenerator = () => {
   };
 
   const save = () => {
-    setLoading(true)
-    const cleanGeneratorState = {...generatorState}
+    setLoading(true);
+    const cleanGeneratorState = { ...generatorState };
 
     if (!run_deposit_changed) {
-      delete cleanGeneratorState['pay_distribution_data']
+      delete cleanGeneratorState["pay_distribution_data"];
     }
 
-    generateUserLink(cleanGeneratorState).then(
-      () => {
-        setLoading(false)
-        renderNotification('Url successfully generated. A message has been sent to the user.')
-      }
-    ).catch(error => {
-        setLoading(false)
-        let ignoreKeys = Object.keys(GENERATOR_INITIAL_STATE)
-        ignoreKeys.push('pay_distribution_data')
-        displayErrorNotifications(error, ignoreKeys)
+    generateUserLink(cleanGeneratorState)
+      .then(() => {
+        setLoading(false);
+        renderNotification(
+          "Url successfully generated. A message has been sent to the user."
+        );
+      })
+      .catch((error) => {
+        setLoading(false);
+        let ignoreKeys = Object.keys(GENERATOR_INITIAL_STATE);
+        ignoreKeys.push("pay_distribution_data");
+        displayErrorNotifications(error, ignoreKeys);
         if (error.response !== undefined) {
-          updateErrors(error.response.data)
+          updateErrors(error.response.data);
         }
-      }
-    )
-  }
-
+      });
+  };
 
   return (
     <PaperContainer title="Generator">
@@ -185,48 +242,28 @@ export const LinkGenerator = () => {
         </div>
         <div className="row-div-start">
           <div className="checkbox-div">
-            <FormControlLabel
-              className="switch-box margin-top-30"
-              control={
-                <Checkbox
-                  checked={send_text_message}
-                  onChange={updateOptionalFieldsState}
-                  color="primary"
-                  name="send_text_message"
-                />
-              }
+            <CustomCheckbox
+              checked={send_text_message}
+              onChange={updateOptionalFieldsState}
+              name="send_text_message"
               label="Send text message"
-            ></FormControlLabel>
+            />
           </div>
-
           <div className="checkbox-div">
-            <FormControlLabel
-              className="switch-box margin-top-30"
-              control={
-                <Checkbox
-                  checked={set_integration}
-                  onChange={updateOptionalFieldsState}
-                  color="primary"
-                  name="set_integration"
-                />
-              }
+            <CustomCheckbox
+              checked={set_integration}
+              onChange={updateOptionalFieldsState}
+              name="set_integration"
               label="Set integrations"
-            ></FormControlLabel>
+            />
           </div>
-
           <div className="checkbox-div">
-            <FormControlLabel
-              className="switch-box margin-top-30"
-              control={
-                <Checkbox
-                  checked={run_deposit_changed}
-                  onChange={updateOptionalFieldsState}
-                  color="primary"
-                  name="run_deposit_changed"
-                />
-              }
+            <CustomCheckbox
+              checked={run_deposit_changed}
+              onChange={updateOptionalFieldsState}
+              name="run_deposit_changed"
               label="Run direct deposit changed"
-            ></FormControlLabel>
+            />
           </div>
         </div>
         {send_text_message && (
@@ -253,9 +290,9 @@ export const LinkGenerator = () => {
         )}
         <div className="margin-top-30">
           <Button
+            className="homePageSaveButton"
             color="primary"
             variant="contained"
-            className="button-centered"
             onClick={() => save()}
           >
             {loading ? (
@@ -268,4 +305,4 @@ export const LinkGenerator = () => {
       </div>
     </PaperContainer>
   );
-}
+};
